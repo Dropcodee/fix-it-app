@@ -1,5 +1,6 @@
 import 'package:flutter_app/login.dart';
 import 'package:flutter/material.dart';
+import 'dashboard/dash.dart';
 
 void main() => runApp(MyApp());
 
