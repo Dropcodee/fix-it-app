@@ -10,6 +10,7 @@ class FormScreen extends StatefulWidget {
 class FormScreenState extends State<FormScreen> {
   String _phoneNumber;
   String _password;
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   Widget _buildPhoneNumber() {
@@ -33,6 +34,7 @@ class FormScreenState extends State<FormScreen> {
     return TextFormField(
       decoration: InputDecoration(labelText: 'Password'),
       keyboardType: TextInputType.text,
+      obscureText: true,
       validator: (String value) {
         if (value.isEmpty) {
           return 'Password is Required';
@@ -46,8 +48,6 @@ class FormScreenState extends State<FormScreen> {
     );
   }
 
- 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,32 +59,44 @@ class FormScreenState extends State<FormScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              
               _buildPhoneNumber(),
               _buildPassword(),
-              
 
               // _buildCalories(),
               SizedBox(height: 100),
-              RaisedButton(
-                child: Text(
-                  'Submit',
-                  style: TextStyle(color: Colors.blue, fontSize: 16),
-                ),
-                onPressed: () {
-                  if (!_formKey.currentState.validate()) {
-                    return;
-                  }
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    RaisedButton(
+                      child: Text(
+                        'Submit',
+                        style: TextStyle(color: Colors.blue, fontSize: 16),
+                      ),
+                      onPressed: () {
+                        if (!_formKey.currentState.validate()) {
+                          return;
+                        } else {
+                          Navigator.of(context).pushNamed("/Home");
+                        }
 
-                  _formKey.currentState.save();
+                        _formKey.currentState.save();
 
-                  print(_phoneNumber);
+                        print(_phoneNumber);
 
-                  print(_password);
+                        print(_password);
 
-                  //Send to API
-                },
-              )
+                        //Send to API
+                      },
+                    ),
+                    RaisedButton(
+                        child: Text(
+                          'SignUp',
+                          style: TextStyle(color: Colors.blue, fontSize: 16),
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).pushNamed("/Signup");
+                        })
+                  ])
             ],
           ),
         ),
