@@ -84,7 +84,7 @@ class GridDashboard extends StatelessWidget {
                   data.subtitle,
                   style: GoogleFonts.openSans(
                     textStyle: TextStyle(
-                      color: Colors.white38,
+                      color: Colors.white70,
                       fontSize: 10,
                       fontWeight: FontWeight.w600,
                     ),
